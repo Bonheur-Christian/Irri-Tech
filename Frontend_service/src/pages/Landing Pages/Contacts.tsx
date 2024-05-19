@@ -10,7 +10,7 @@ function Contacts() {
           Contact Us
         </h1>
         <hr />
-        <div className="intro fs-4 ">
+        <div className="fs-4 ">
           <p>
             Thank you for your interest in Irri-Tech. For inquiries, support, or
             to learn more about our irrigation technology solutions, please

@@ -3,7 +3,6 @@ const cors = require('cors');
 const { connectionToDb, getDb } = require('./db');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const cookie = require('cookie-parser');
 const cookieParser = require('cookie-parser');
 const app = express();
 
@@ -57,7 +56,7 @@ app.post('/login', async (req, res) => {
         if (!farmer) {
             return res.status(400).send("Invalid credentials");
         } else {
-            console.log("user found");
+            res.status(200).json({message:"User found"})
         }
         const isMatch = await bcrypt.compare(password, farmer.hashedPassword);
         if (!isMatch) {
@@ -80,8 +79,3 @@ app.post('/login', async (req, res) => {
     }
 });
 
-
-
-// compliments
-//MVC
-//controller 

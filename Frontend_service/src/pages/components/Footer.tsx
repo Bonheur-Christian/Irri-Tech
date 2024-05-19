@@ -3,9 +3,9 @@ function Footer() {
   return (
     <div className="d-flex gap-5 bg-dark">
       <div className="m-4">
-        <address className="fs-4 fst-italic m-4  p-4 text-light d-flex gap-5">
+        <address className="fs-4 m-4  p-5 text-light d-flex gap-5">
           <div className="border-end border-success pe-5">
-            <h2 className=" text-success">Contacts</h2>
+            <h2 className=" text-success-subtle">Contacts</h2>
             <p>Email: irritech@gmail.com</p>
             <p>Tel: 0783144722 </p>
             <p>Website: irritech.com</p>

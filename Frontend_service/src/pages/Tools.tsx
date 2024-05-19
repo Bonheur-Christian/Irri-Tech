@@ -43,7 +43,7 @@ function Tools() {
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <h1 className="text-primary fw-bolder fs-4">All</h1>
+          <h1 className="text-success fw-bolder fs-4">All</h1>
           <MyDropdown
             title="All"
             items={[
@@ -67,7 +67,7 @@ function Tools() {
             ]}
           ></MyDropdown>
 
-          <h1 className="text-primary fw-bolder fs-4">Categories</h1>
+          <h1 className="text-success fw-bolder fs-4">Categories</h1>
           <MyDropdown
             title="Installation Tools"
             items={[
@@ -105,55 +105,8 @@ function Tools() {
       <h1 className="m-4 p-4 text-center">
         Tools used in our Irrigation System.
       </h1>
-      <ToolSet
-        title=""
-        backgroundColor=""
-        tool1="Pipe Glue"
-        image1="pipe glue.png"
-        tool2="Pipes Cutter"
-        image2="pipe cutters.png"
-        tool3="Sprinkler stand"
-        image3="Sprinkler stand.png"
-        tool4="Trenching tool"
-        image4="trenching tool.png"
-        tool5="Pipe Connectors"
-        image5="connectors.png"
-        tool6="Water Pump"
-        image6="pump.png"
-        tool7="Pipes"
-        image7="Pipes.png"
-        tool8="Sprinklers"
-        image8="Sprinkler.png"
-        tool9="Water tank"
-        image9="water tank.png"
-        tool10="Tank Tap"
-        image10="tank tap.png"
-      />
-      <ToolSet
-        title=""
-        backgroundColor=""
-        tool1="Drainage Tiles"
-        image1="Drainage tiles.png"
-        tool2="Filters"
-        image2="Filters.png"
-        tool3="Hole Punch"
-        image3="drip line hole punch.png"
-        tool4="Water Meter"
-        image4="water meter.png"
-        tool5="Irrigation Controller"
-        image5="irrigation controller.png"
-        tool6="Water Pressure Regulator"
-        image6="water pressure regulators.png"
-        tool7="Hand Pruner"
-        image7="Hand pruner.png"
-        tool8="Pipe Fittings"
-        image8="pipe fittings.png"
-        tool9="Data Logger"
-        image9="data logger.png"
-        tool10="Emmiter Insertion"
-        image10="Emmitter insertion.png"
-      />
-      <Footer/>
+      <ToolSet />
+      <Footer />
     </>
   );
 }

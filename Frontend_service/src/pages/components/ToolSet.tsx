@@ -1,140 +1,32 @@
-interface Props {
-  title: string;
-  backgroundColor: string;
-  tool1: string;
-  tool2: string;
-  tool4: string;
-  tool3: string;
-  tool5: string;
-  tool6: string;
-  tool7: string;
-  tool8: string;
-  tool9: string;
-  tool10: string;
-  image1: string;
-  image2: string;
-  image3: string;
-  image4: string;
-  image5: string;
-  image6: string;
-  image7:string;
-  image8:string;
-  image9:string;
-  image10: string;
-}
+function ToolSet() {
+  const imageUrls = [
+    { image: "images/Tools/pipesGlue.jpeg", Tool: "Tap" },
+    { image: "images/Tools/punchTool.jpeg", Tool: "Punch Tool" },
+    { image: "images/Tools/pipeFittings.jpeg", Tool: "Pipe Fittings" },
+    { image: "images/Tools/emitterInsertionTool.jpeg", Tool: "Emitter Insertion Tool" },
+    { image: "images/Tools/handPruner.jpeg", Tool: "Hand Pruner" },
+    { image: "images/Tools/trenchingTool.jpeg", Tool: "Data Logger" },
+    { image: "images/Tools/Taps.jpeg", Tool: "Taps" },
+    { image: "images/Tools/pipeConnectors.jpeg", Tool: "Pipes Connectors" },
+    { image: "images/Tools/waterMeter.jpeg", Tool: "Water Meter" },
+    { image: "images/Tools/waterPipes.jpeg", Tool: "Water Pipes" },
+    { image: "images/Tools/Taps.jpeg", Tool: "Tap" },
+    { image: "images/Tools/Taps.jpeg", Tool: "Tap" },
 
-function ToolSet({
-  title,
-  backgroundColor,
-  tool1,
-  tool2,
-  tool3,
-  tool4,
-  tool5,
-  tool6,
-  tool7,
-  tool8,
-  tool9,
-  tool10,
-  image1,
-  image2,
-  image3,
-  image4,
-  image5,
-  image6,
-  image7,
-  image8,
-  image9,
-  image10,
-}: Props) {
+  ];
   return (
-    <div className={`p-4 bg-${backgroundColor}-subtle`}>
-      <h2 className="f-2 fw-bolder text-center">{title}</h2>
-      <div className="m-4 p-4 d-flex justify-content-center gap-5">
-        <div className="shadow-lg w-25 bg-dark-subtle">
-          <img
-            src={`/images/Tools/${image1}`}
-            alt="Pipe glue"
-            className="image-fluid w-100 h-75"
-          />
-          <label className="d-block fw-bold fs-3 border-top">{tool1}</label>
+    <div className="d-flex ms-5 gap-4 flex-wrap h-25">
+      {imageUrls.map((url, index) => (
+        <div className="w-25 h-50 bg-white card tool border border-success">
+          <img src={url.image} alt={`Image ${index +1}`} className="flex-wrap h-50" />
+          <label className="card-text text-center fw-bold fs-3 mt-4">{url.Tool}</label>
+          <div className="card-body">
+            <button className="btn bg-success text-white fw-bold text-center mb-auto">
+              Usage
+            </button>
+          </div>
         </div>
-        <div className="shadow-lg w-25 bg-dark-subtle">
-          <img
-            src={`/images/Tools/${image2}`}
-            alt="Pipe cutter"
-            className="image-fluid w-100 h-75"
-          />
-          <label className="d-block fw-bold fs-3 border-top">{tool2}</label>
-        </div>
-        <div className="shadow-lg w-25 bg-dark-subtle">
-          <img
-            src={`/images/Tools/${image3}`}
-            alt=" Sprinkler stand"
-            className="image-fluid w-100 h-75"
-          />
-          <label className="d-block fw-bold fs-3 border-top">{tool3}</label>
-        </div>
-        <div className="shadow-lg w-25 bg-dark-subtle">
-          <img
-            src={`/images/Tools/${image4}`}
-            alt="Trenching tool"
-            className="image-fluid w-100 h-75"
-          />
-          <label className="d-block fw-bold fs-3 border-top">{tool4}</label>
-        </div>
-
-        <div className="shadow-lg w-25 bg-dark-subtle">
-          <img
-            src={`/images/Tools/${image5}`}
-            alt="Connectors"
-            className="image-fluid w-100 h-75"
-          />
-          <label className="d-block fw-bold fs-3 border-top">{tool5}</label>
-        </div>
-      </div>
-      <div className="d-flex justify-content-center gap-5 m-4">
-        <div className="shadow-lg w-25 bg-dark-subtle">
-          <img
-            src={`/images/Tools/${image6}`}
-            alt="Water pump"
-            className="image-fluid w-100 h-75 border-bottom"
-          />
-          <label className="d-block fw-bold fs-3 ps-5">{tool6}</label>
-        </div>
-        <div className="shadow-lg w-25 bg-dark-subtle">
-          <img
-            src={`/images/Tools/${image7}`}
-            alt="Pipes"
-            className="image-fluid w-100 h-75 border-bottom"
-          />
-          <label className="d-block fw-bold fs-3 ps-5">{tool7}</label>
-        </div>
-        <div className="shadow-lg w-25 bg-dark-subtle">
-          <img
-            src={`/images/Tools/${image8}`}
-            alt="Sprinklers"
-            className="image-fluid w-100 h-75 border-bottom"
-          />
-          <label className="d-block fw-bold fs-3 ps-5">{tool8}</label>
-        </div>
-        <div className="shadow-lg w-25 bg-dark-subtle">
-          <img
-            src={`/images/Tools/${image9}`}
-            alt="water tank"
-            className="image-fluid w-100 h-75 border-bottom"
-          />
-          <label className="d-block fw-bold fs-3 ps-5">{tool9}</label>
-        </div>
-        <div className="shadow-lg w-25 bg-dark-subtle">
-          <img
-            src={`/images/Tools/${image10}`}
-            alt="tank tap"
-            className="image-fluid w-100 h-75 border-bottom"
-          />
-          <label className="d-block fw-bold fs-3 ps-5">{tool10}</label>
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
