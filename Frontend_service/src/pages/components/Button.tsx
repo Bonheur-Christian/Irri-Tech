@@ -22,7 +22,7 @@ function Button({
   return (
     <button
       {...props}
-      className={`btn ${margin} ${padding} btn-outline-${color} btn-${type} btn-${alignment}border-light shadow-sm`}
+      className={`btn ${margin} ${padding} text-white fw-bold btn-${color} btn-${type} btn-${alignment}border-light shadow-sm`}
     >
       {children}
     </button>

@@ -50,15 +50,15 @@ function Body() {
         <div></div>
       </div>
       <h1 className="text-center text-dark mt-5">SERVICE</h1>
-      <div className="d-flex gap-5">
-        <p className="w-50 fs-4 ps-5 ms-5 m-5 p-5 border rounded">
+      <div className="d-flex justify-content-center align-items-center">
+        <div className="d-flex w-50 fs-3 m-5 p-5 justify-content-center align-items-center border border-success rounded">
           Providing sustainable way of maintaining the soil moisture ensuring
           the good health of the plants. Providing the plant with Enough water
           required for either photosynthesis or mineral transport. At, Irri-Tech
           we enhance the water minimal usage, promote healthy landscape and
           deliver long-term savings for our customers.
-        </p>
-        <img src="images/bg.jpg" alt="" className="w-25 m-5 rounded" />
+          <img src="images/bg.png" alt="" className="w-25 m-4 h-50 rounded" />
+        </div>
       </div>
     </>
   );

@@ -56,7 +56,7 @@ app.post('/login', async (req, res) => {
         if (!farmer) {
             return res.status(400).send("Invalid credentials");
         } else {
-            res.status(200).json({message:"User found"})
+            res.status(200).json({ message: "User found" })
         }
         const isMatch = await bcrypt.compare(password, farmer.hashedPassword);
         if (!isMatch) {

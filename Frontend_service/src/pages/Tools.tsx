@@ -1,10 +1,11 @@
-import ToolSet from "./components/ToolSet";
+import ToolSet, { imageUrls } from "./components/ToolSet";
 import Button from "./components/Button";
 import { Offcanvas } from "react-bootstrap";
 import { useState } from "react";
 import MyDropdown from "./components/DropDown";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { Dropdown } from "react-bootstrap";
 
 function Tools() {
   const [show, setShow] = useState(false);
@@ -18,10 +19,10 @@ function Tools() {
   };
 
   return (
-    <>
+    <div className="bg-success-subtle">
       <NavBar />
       <Button
-        color="success"
+        color="success text-white border-success"
         type="lg"
         padding="p-2"
         margin="mt-5 m-4"
@@ -31,6 +32,7 @@ function Tools() {
       >
         Categories
       </Button>
+
       <Offcanvas
         show={show}
         onHide={handleClose}
@@ -102,12 +104,48 @@ function Tools() {
           ></MyDropdown>
         </Offcanvas.Body>
       </Offcanvas>
-      <h1 className="m-4 p-4 text-center">
+      <div className="d-flex justify-content-end p-4 filter">
+        <Dropdown>
+          <Dropdown.Toggle className="bg-white border-success text-success fw-bold ">
+            Filter_by Categories
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <ul className="list-unstyled">
+              <li className="p-2 text-decoration-none">
+                <a
+                  href="#installationTools"
+                  className="text-decoration-none fw-bold text-secondary"
+                >
+                  Installation Tools
+                </a>
+              </li>
+              <li className="p-2">
+                <a
+                  href="#waterDelivery"
+                  className="text-decoration-none fw-bold text-secondary"
+                >
+                  Water Delivery Tools
+                </a>
+              </li>
+              <li className="p-2">
+                <a
+                  href="#measurementTools"
+                  className="text-decoration-none fw-bold text-secondary"
+                >
+                  Measurement Tools
+                </a>{" "}
+              </li>
+            </ul>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
+      {/* <SearchBar data={imageUrls} /> */}
+      {/* <h1 className="m-4 p-4 text-center">
         Tools used in our Irrigation System.
-      </h1>
-      <ToolSet />
+      </h1> */}
+      <ToolSet data={imageUrls} />
       <Footer />
-    </>
+    </div>
   );
 }
 

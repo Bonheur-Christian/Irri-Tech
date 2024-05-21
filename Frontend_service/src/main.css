@@ -38,3 +38,21 @@ body {
     transform: scale(1.01);
     box-shadow: 5px 5px 50px 10px rgba(232, 232, 232, 0.355);
 }
+
+.filter{
+    margin-top: -8rem;
+}
+
+.tool-card{
+    height: 2rem;
+    width: 2rem;
+    padding: 0;
+}
+
+.search-input:focus{
+    outline: none;
+}
+
+.search-input::placeholder{
+    color: rgb(214, 214, 214);
+}
