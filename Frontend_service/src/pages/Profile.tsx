@@ -2,13 +2,12 @@ import NavBar from "./components/NavBar";
 import { Link } from "react-router-dom";
 
 function Profile() {
-  const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token");
   console.log(token);
-   
-  const handleLogOut = ()=>{
-    localStorage.removeItem("token")
-  }
-  
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <>
       <NavBar />
@@ -51,7 +50,10 @@ function Profile() {
               <img src={"./map-pin.svg"} alt="home" />
               <p className="pt-4 fw-bolder">Locations</p>
             </div>
-            <Link to="/SignIn" className="text-decoration-none text-success fw-bolder">
+            <Link
+              to="/SignIn"
+              className="text-decoration-none text-success fw-bolder"
+            >
               <div className="d-flex gap-2" onClick={handleLogOut}>
                 <img src={"./log-out.svg"} alt="home" />
                 <p className="pt-4 fw-bolder">Log-out</p>
@@ -64,16 +66,16 @@ function Profile() {
             </h2>
             <section className="p-5 m-5 w-75 shadow-sm">
               <div>
-                <label className="fs-3 fst-italic">Name:</label>
-                <p>MUHUMURE Bonheur Christian</p>
+                <label className="fs-3 fw-bold">Name:</label>
+                <p id="name"></p>
               </div>
               <div>
-                <label className="fs-3 fst-italic">Email:</label>
-                <p>mbonheurc23@gmail.com</p>
+                <label className="fs-3 fw-bold">Email:</label>
+                <p id="email"></p>
               </div>
               <div>
-                <label className="fs-3 fst-italic">Password:</label>
-                <p>Muhumure123</p>
+                <label className="fs-3 fw-bold">Password:</label>
+                <p id="password"></p>
               </div>
             </section>
           </div>

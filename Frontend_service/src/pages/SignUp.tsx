@@ -5,6 +5,7 @@ import React from "react";
 import Alert from "./components/Alert";
 import { Link, useNavigate } from "react-router-dom";
 function SignUp() {
+  const [alertVisible, setAlertVisibility] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,17 +31,18 @@ function SignUp() {
         },
         body: JSON.stringify(formData),
       });
+      console.log(response);
 
       if (!response.ok) {
         throw new Error("error in sending request");
       }
       navigate("/signIn");
     } catch (error) {
+      console.error(error);
       console.log(error, "Error occured in posting data");
     }
   };
 
-  const [alertVisible, setAlertVisibility] = useState(false);
   const handleShow = () => {
     if (
       formData.name.trim() !== "" &&
@@ -61,7 +63,7 @@ function SignUp() {
       <Link to="/">
         <img src="./arrow-left.svg" alt="" />
       </Link>
-      {/* <img src="./field.png" alt="./welcome.svg" /> */}
+      {alertVisible && <Alert onClose={handleClose}>Email already used</Alert>}
       <Form onSubmit={handleSubmit}>
         <Form.Text className="text-center m-5 text-success fw-bolder fs-2">
           Sign Up
@@ -111,9 +113,6 @@ function SignUp() {
           Sign Up
         </Button>
       </Form>
-      {alertVisible && (
-        <Alert onClose={handleClose}>You've successfully signed up</Alert>
-      )}
     </div>
   );
 }

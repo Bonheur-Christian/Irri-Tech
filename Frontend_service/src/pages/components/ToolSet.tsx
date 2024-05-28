@@ -94,15 +94,19 @@ function ToolSet({ data }: props) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchQuery(value);
-    filterData(value);
+    filterData(value)
   };
 
+
+ 
   const filterData = (value: string) => {
     const filtered = data.filter((item) =>
       item.Tool.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredData(filtered);
   };
+
+
 
   const InstallationTools = filteredData.filter(
     (tool) => tool.category === "Installation"
@@ -206,7 +210,7 @@ function ToolSet({ data }: props) {
             ))}
           </>
         ) : (
-          <p className="text-danger fs-2 fw-bold vh-75">No Tool found!</p>
+          <p className="text-danger fs-2 fw-bold vh-100 ">No Tool found!</p>
         )}
       </div>
     </>

@@ -35,7 +35,7 @@ function SignIn() {
         const data = await response.json();
         const token = data.token;
         localStorage.setItem("token", token);
-        window.location.href='/profile'
+        window.location.href = "/profile";
       }
     } catch (error) {
       console.log(error, "Error detected in logging in.");
@@ -47,21 +47,14 @@ function SignIn() {
   };
   return (
     <div className="container-xxl  w-25 mb-5 mt-5 p-5">
-       <Link to="/"><img src="./arrow-left.svg" alt=""/></Link>
+      <Link to="/">
+        <img src="./arrow-left.svg" alt="" />
+      </Link>
       <Form onSubmit={handleSubmit}>
         <Form.Text className="text-center m-5 text-success fw-bolder fs-2">
           Sign In
         </Form.Text>
-        <Form.Group className="m-4">
-          <Form.Label className="fw-bold">Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter name"
-            className="placeholder-color"
-            name="name"
-            onChange={handleChange}
-          />
-        </Form.Group>
+
         <Form.Group className="m-4">
           <Form.Label className="fw-bold">Email</Form.Label>
           <Form.Control

@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const { connectionToDb, getDb } = require('./db');
 const bcrypt = require('bcrypt')
+const mongoose = require('mongoose')
+const Farmer = require('./models/userModel')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser');
 const app = express();
@@ -12,47 +13,59 @@ app.use(cors());
 app.use(cookieParser());
 const port = 4041;
 
-let db;
+const url = 'mongodb://localhost:27017/Farmers';
 
-connectionToDb((err) => {
-    if (!err) {
+mongoose.connect(url)
+    .then(() => {
         app.listen(port, () => {
-            console.log("App is running on port", port);
+            console.log("Connected to DB.");
         })
-        db = getDb();
-    }
-})
+    })
+    .catch((err) => {
+        console.log("Error in connecting to the db.");
+    })
 
 app.post('/signup', async (req, res) => {
     var name = req.body.name;
     var email = req.body.email;
     var password = req.body.password;
-    const saltRounds = 5;
-    const salt = await bcrypt.genSalt(saltRounds);
-    hashedPassword = await bcrypt.hash(password, salt)
+    try {
+        const farmerEmail = await Farmer.findOne({ email })
+        if (farmerEmail) {
+            console.log("email already used");
+        } else {
+            const saltRounds = 10;
+            const salt = await bcrypt.genSalt(saltRounds);//generating random text to be assigned to the password before hashing
+            hashedPassword = await bcrypt.hash(password, salt)
+            // const farmerDetails = [{ name, email, hashedPassword }]
 
-    const farmerDetails = [{ name, email, hashedPassword }]
+            if (!name || !email || !password) {
+                console.log("plz fill all the given fields");
+            } else {
+                const newFarmer = new Farmer({
+                    name: name,
+                    password: hashedPassword,
+                    email: email
+                })
 
-    if (!name || !email || !password) {
-        console.log("plz fill all the given fields");
-    } else {
-
-        db.collection('farmer')
-            .insertMany(farmerDetails)
-            .then((result) => {
-                res.status(200).json(result)
-            })
-            .catch((err) => {
-                res.status(500).json({ err: "failed to post data", message: err.message })
-            })
+                newFarmer.save()
+                    .then((response) => {
+                        res.status(200).json(response)
+                    })
+                    .catch((err) => {
+                        res.status(500).json({ message: "Error in saving farmer into the databasecd " })
+                    })
+            }
+        }
+    } catch (err) {
+        console.log(err);
     }
 })
 
 app.post('/login', async (req, res) => {
-    const { name, email, password } = req.body;
+    const { email, password } = req.body;
     try {
-        const connection = db.collection('farmer')
-        var farmer = await connection.findOne({ email });
+        var farmer = await Farmer.findOne({ email });
         if (!farmer) {
             return res.status(400).send("Invalid credentials");
         } else {
@@ -72,10 +85,23 @@ app.post('/login', async (req, res) => {
                 httpOnly: true
             })
             res.status(200).json({ farmer: "you are now logged in", token: token })
-            // res.redirect("")
         }
     } catch (err) {
         res.status(500).json({ err: "error in logging in the system", message: err.message })
     }
 });
+
+app.get('/farmer', async (req, res) => {
+    const { email } = req.body
+    try {
+        var farmer = await Farmer.findOne({ email })
+        console.log(farmer);
+        if (farmer) {
+            console.log("here");
+            res.status(200).json(farmer)
+        }
+    } catch (err) {
+        res.status(500).json("farmer not found")
+    }
+})
 
